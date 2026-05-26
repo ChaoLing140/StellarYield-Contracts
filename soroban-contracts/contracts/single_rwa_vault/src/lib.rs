@@ -2830,7 +2830,13 @@ impl SingleRWAVault {
     }
 
     /// Revoke `role` from `addr`.  Only the admin may revoke roles.
-    pub fn revoke_role(e: &Env, caller: Address, addr: Address, role: Role, reason: Option<String>) {
+    pub fn revoke_role(
+        e: &Env,
+        caller: Address,
+        addr: Address,
+        role: Role,
+        reason: Option<String>,
+    ) {
         caller.require_auth();
         require_admin(e, &caller);
         put_role(e, addr.clone(), role.clone(), false);
@@ -2852,7 +2858,13 @@ impl SingleRWAVault {
 
     /// Backward-compatible: grants or revokes the `FullOperator` superrole.
     /// Prefer `grant_role` / `revoke_role` for new integrations.
-    pub fn set_operator(e: &Env, caller: Address, operator: Address, status: bool, reason: Option<String>) {
+    pub fn set_operator(
+        e: &Env,
+        caller: Address,
+        operator: Address,
+        status: bool,
+        reason: Option<String>,
+    ) {
         caller.require_auth();
         require_admin(e, &caller);
         require_valid_address(e, &operator);
@@ -3420,7 +3432,7 @@ impl SingleRWAVault {
         // Ensure no double-approval.
         for i in 0..approvals.len() {
             if approvals.get(i).unwrap() == caller {
-                panic_with_error!(e, Error::AlreadyProcessed);
+                panic_with_error!(e, Error::AlreadyApproved);
             }
         }
 

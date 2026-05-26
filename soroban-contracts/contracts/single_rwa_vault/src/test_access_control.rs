@@ -318,6 +318,8 @@ fn test_emergency_withdraw_treasury_manager_authorized() {
     vault.grant_role(&admin, &tm, &Role::TreasuryManager);
 
     token.mint(&vault_id, &1000);
+    // emergency_withdraw requires the vault to already be paused
+    vault.pause(&admin, &String::from_str(&e, "Test"));
     vault.emergency_withdraw(&tm, &recipient);
 
     assert_eq!(token.balance(&recipient), 1000);

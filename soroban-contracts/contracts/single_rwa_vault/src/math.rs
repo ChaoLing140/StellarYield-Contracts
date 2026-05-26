@@ -13,6 +13,7 @@ use crate::errors::Error;
 /// deposit, mint, withdraw, redeem, transfer, burn, and yield-distribution
 /// paths so that integrators see the same error code regardless of which
 /// signed-amount entry point they hit with bad input.
+#[allow(dead_code)]
 pub fn assert_nonnegative(e: &Env, amount: i128) {
     if amount < 0 {
         panic_with_error!(e, Error::ZeroAmount);

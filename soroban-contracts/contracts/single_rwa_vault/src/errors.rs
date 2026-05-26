@@ -73,6 +73,8 @@ pub enum Error {
     ProposalAlreadyExecuted = 42,
     /// Approval threshold has not been reached yet.
     ThresholdNotMet = 43,
+    /// Signer has already approved this proposal.
+    AlreadyApproved = 44,
     /// Threshold must be >= 1 and <= number of signers.
     InvalidThreshold = 45,
     /// Vault total assets exceeds the funding target during the funding phase.
