@@ -85,6 +85,7 @@ coverage/
 issue.md
 pr.md
 LOCAL_LOW_COMPLEXITY_ISSUES.md
+ISSUES.md
 
 target/
 target_local/

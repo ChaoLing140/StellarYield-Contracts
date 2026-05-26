@@ -1073,8 +1073,6 @@ impl SingleRWAVault {
         results
     }
 
-        results
-    }
     /// Batched deposit preflight check (bounded to avoid expensive calls).
     /// Returns per-user deposit validation results with status codes and expected shares.
     /// Max batch size: 50 entries per call.
