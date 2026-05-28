@@ -1,9 +1,14 @@
-// Database connection — configure via DATABASE_URL env var
-// Replace with your preferred client (pg, Drizzle, Prisma, etc.)
+import pg from "pg";
+import { config } from "../config.js";
+
+const { Pool } = pg;
+
+export const pool = new Pool({ connectionString: config.db.url });
 
 export async function query<T = Record<string, unknown>>(
-  _sql: string,
-  _params?: unknown[],
+  sql: string,
+  params?: unknown[],
 ): Promise<T[]> {
-  throw new Error("Not implemented");
+  const result = await pool.query(sql, params);
+  return result.rows;
 }
